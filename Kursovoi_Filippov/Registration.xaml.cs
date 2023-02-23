@@ -29,22 +29,22 @@ namespace Kursovoi_Filippov
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            //проверяем есть ли такой же пользователь
+            
             if (AgenstvoNedvezjEntities2.GetContext().Users.Count(x => x.Login == txbLogin.Text) > 0)
             {
                 MessageBox.Show("Пользователь с таким логином есть!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-            //если прошли проверку логина, записываем нового пользователя с ролью 2
+           
             try
             {
                 Users userData = new Users()
                 {
-                    Login = txbLogin.Text, //получаем даные логина
-                    Password = txbPass.Text, //получаем парол
+                    Login = txbLogin.Text, 
+                    Password = txbPass.Text, 
                 };
-                AgenstvoNedvezjEntities2.GetContext().Users.Add(userData);//добавление объекта
-                AgenstvoNedvezjEntities2.GetContext().SaveChanges();//сохранение
+                AgenstvoNedvezjEntities2.GetContext().Users.Add(userData);
+                AgenstvoNedvezjEntities2.GetContext().SaveChanges();
                 MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch
