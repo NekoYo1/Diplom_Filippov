@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AgenstvoNedvezjModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Nedvezj">
+          <Key>
+            <PropertyRef Name="IdNedvezj" />
+          </Key>
+          <Property Name="IdNedvezj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNedvezjType" Type="int" Nullable="false" />
+          <Property Name="IdRayon" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="Square" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Opisanie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IdProdavec" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Actual" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NedvezjType">
+          <Key>
+            <PropertyRef Name="IdNedvezjType" />
+          </Key>
+          <Property Name="IdNedvezjType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NedvezjTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prodavec">
+          <Key>
+            <PropertyRef Name="IdProdavec" />
+          </Key>
+          <Property Name="IdProdavec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="17" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rayon">
+          <Key>
+            <PropertyRef Name="IdRayon" />
+          </Key>
+          <Property Name="IdRayon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRayona" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumRayona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sdelki">
+          <Key>
+            <PropertyRef Name="IdSdelki" />
+          </Key>
+          <Property Name="IdSdelki" Type="int" Nullable="false" />
+          <Property Name="IdNedvej" Type="int" Nullable="false" />
+          <Property Name="IdProdavec" Type="int" Nullable="false" />
+          <Property Name="DateSdelki" Type="date" Nullable="false" />
+          <Property Name="KomissiaAgenstva" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="idProdavec" Type="int" />
+        </EntityType>
+        <Association Name="FK_Nedvezj_NedvezjType">
+          <End Role="NedvezjType" Type="Self.NedvezjType" Multiplicity="1" />
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NedvezjType">
+              <PropertyRef Name="IdNedvezjType" />
+            </Principal>
+            <Dependent Role="Nedvezj">
+              <PropertyRef Name="IdNedvezjType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nedvezj_Prodavec">
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="1" />
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodavec">
+              <PropertyRef Name="IdProdavec" />
+            </Principal>
+            <Dependent Role="Nedvezj">
+              <PropertyRef Name="IdProdavec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nedvezj_Rayon">
+          <End Role="Rayon" Type="Self.Rayon" Multiplicity="1" />
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rayon">
+              <PropertyRef Name="IdRayon" />
+            </Principal>
+            <Dependent Role="Nedvezj">
+              <PropertyRef Name="IdRayon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sdelki_Nedvezj">
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="1" />
+          <End Role="Sdelki" Type="Self.Sdelki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nedvezj">
+              <PropertyRef Name="IdNedvezj" />
+            </Principal>
+            <Dependent Role="Sdelki">
+              <PropertyRef Name="IdNedvej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sdelki_Prodavec">
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="1" />
+          <End Role="Sdelki" Type="Self.Sdelki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodavec">
+              <PropertyRef Name="IdProdavec" />
+            </Principal>
+            <Dependent Role="Sdelki">
+              <PropertyRef Name="IdProdavec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Prodavec">
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodavec">
+              <PropertyRef Name="IdProdavec" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="idProdavec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AgenstvoNedvezjModelContainer">
+          <EntitySet Name="Nedvezj" EntityType="Self.Nedvezj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NedvezjType" EntityType="Self.NedvezjType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prodavec" EntityType="Self.Prodavec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rayon" EntityType="Self.Rayon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sdelki" EntityType="Self.Sdelki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Nedvezj_NedvezjType" Association="Self.FK_Nedvezj_NedvezjType">
+            <End Role="NedvezjType" EntitySet="NedvezjType" />
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedvezj_Prodavec" Association="Self.FK_Nedvezj_Prodavec">
+            <End Role="Prodavec" EntitySet="Prodavec" />
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedvezj_Rayon" Association="Self.FK_Nedvezj_Rayon">
+            <End Role="Rayon" EntitySet="Rayon" />
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sdelki_Nedvezj" Association="Self.FK_Sdelki_Nedvezj">
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+            <End Role="Sdelki" EntitySet="Sdelki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sdelki_Prodavec" Association="Self.FK_Sdelki_Prodavec">
+            <End Role="Prodavec" EntitySet="Prodavec" />
+            <End Role="Sdelki" EntitySet="Sdelki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Prodavec" Association="Self.FK_Users_Prodavec">
+            <End Role="Prodavec" EntitySet="Prodavec" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AgenstvoNedvezjModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Nedvezj">
+          <Key>
+            <PropertyRef Name="IdNedvezj" />
+          </Key>
+          <Property Name="IdNedvezj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNedvezjType" Type="Int32" Nullable="false" />
+          <Property Name="IdRayon" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Square" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Opisanie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProdavec" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Actual" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NedvezjType" Relationship="Self.FK_Nedvezj_NedvezjType" FromRole="Nedvezj" ToRole="NedvezjType" />
+          <NavigationProperty Name="Prodavec" Relationship="Self.FK_Nedvezj_Prodavec" FromRole="Nedvezj" ToRole="Prodavec" />
+          <NavigationProperty Name="Rayon" Relationship="Self.FK_Nedvezj_Rayon" FromRole="Nedvezj" ToRole="Rayon" />
+          <NavigationProperty Name="Sdelki" Relationship="Self.FK_Sdelki_Nedvezj" FromRole="Nedvezj" ToRole="Sdelki" />
+        </EntityType>
+        <EntityType Name="NedvezjType">
+          <Key>
+            <PropertyRef Name="IdNedvezjType" />
+          </Key>
+          <Property Name="IdNedvezjType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NedvezjTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Nedvezj" Relationship="Self.FK_Nedvezj_NedvezjType" FromRole="NedvezjType" ToRole="Nedvezj" />
+        </EntityType>
+        <EntityType Name="Prodavec">
+          <Key>
+            <PropertyRef Name="IdProdavec" />
+          </Key>
+          <Property Name="IdProdavec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tel" Type="String" MaxLength="17" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Nedvezj" Relationship="Self.FK_Nedvezj_Prodavec" FromRole="Prodavec" ToRole="Nedvezj" />
+          <NavigationProperty Name="Sdelki" Relationship="Self.FK_Sdelki_Prodavec" FromRole="Prodavec" ToRole="Sdelki" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Prodavec" FromRole="Prodavec" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Rayon">
+          <Key>
+            <PropertyRef Name="IdRayon" />
+          </Key>
+          <Property Name="IdRayon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRayona" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumRayona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Nedvezj" Relationship="Self.FK_Nedvezj_Rayon" FromRole="Rayon" ToRole="Nedvezj" />
+        </EntityType>
+        <EntityType Name="Sdelki">
+          <Key>
+            <PropertyRef Name="IdSdelki" />
+          </Key>
+          <Property Name="IdSdelki" Type="Int32" Nullable="false" />
+          <Property Name="IdNedvej" Type="Int32" Nullable="false" />
+          <Property Name="IdProdavec" Type="Int32" Nullable="false" />
+          <Property Name="DateSdelki" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="KomissiaAgenstva" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Nedvezj" Relationship="Self.FK_Sdelki_Nedvezj" FromRole="Sdelki" ToRole="Nedvezj" />
+          <NavigationProperty Name="Prodavec" Relationship="Self.FK_Sdelki_Prodavec" FromRole="Sdelki" ToRole="Prodavec" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="idProdavec" Type="Int32" />
+          <NavigationProperty Name="Prodavec" Relationship="Self.FK_Users_Prodavec" FromRole="Users" ToRole="Prodavec" />
+        </EntityType>
+        <Association Name="FK_Nedvezj_NedvezjType">
+          <End Role="NedvezjType" Type="Self.NedvezjType" Multiplicity="1" />
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NedvezjType">
+              <PropertyRef Name="IdNedvezjType" />
+            </Principal>
+            <Dependent Role="Nedvezj">
+              <PropertyRef Name="IdNedvezjType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nedvezj_Prodavec">
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="1" />
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodavec">
+              <PropertyRef Name="IdProdavec" />
+            </Principal>
+            <Dependent Role="Nedvezj">
+              <PropertyRef Name="IdProdavec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Nedvezj_Rayon">
+          <End Role="Rayon" Type="Self.Rayon" Multiplicity="1" />
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rayon">
+              <PropertyRef Name="IdRayon" />
+            </Principal>
+            <Dependent Role="Nedvezj">
+              <PropertyRef Name="IdRayon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sdelki_Nedvezj">
+          <End Role="Nedvezj" Type="Self.Nedvezj" Multiplicity="1" />
+          <End Role="Sdelki" Type="Self.Sdelki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nedvezj">
+              <PropertyRef Name="IdNedvezj" />
+            </Principal>
+            <Dependent Role="Sdelki">
+              <PropertyRef Name="IdNedvej" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sdelki_Prodavec">
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="1" />
+          <End Role="Sdelki" Type="Self.Sdelki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodavec">
+              <PropertyRef Name="IdProdavec" />
+            </Principal>
+            <Dependent Role="Sdelki">
+              <PropertyRef Name="IdProdavec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Prodavec">
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodavec">
+              <PropertyRef Name="IdProdavec" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="idProdavec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AgenstvoNedvezjEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Nedvezj" EntityType="Self.Nedvezj" />
+          <EntitySet Name="NedvezjType" EntityType="Self.NedvezjType" />
+          <EntitySet Name="Prodavec" EntityType="Self.Prodavec" />
+          <EntitySet Name="Rayon" EntityType="Self.Rayon" />
+          <EntitySet Name="Sdelki" EntityType="Self.Sdelki" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Nedvezj_NedvezjType" Association="Self.FK_Nedvezj_NedvezjType">
+            <End Role="NedvezjType" EntitySet="NedvezjType" />
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedvezj_Prodavec" Association="Self.FK_Nedvezj_Prodavec">
+            <End Role="Prodavec" EntitySet="Prodavec" />
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nedvezj_Rayon" Association="Self.FK_Nedvezj_Rayon">
+            <End Role="Rayon" EntitySet="Rayon" />
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sdelki_Nedvezj" Association="Self.FK_Sdelki_Nedvezj">
+            <End Role="Nedvezj" EntitySet="Nedvezj" />
+            <End Role="Sdelki" EntitySet="Sdelki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sdelki_Prodavec" Association="Self.FK_Sdelki_Prodavec">
+            <End Role="Prodavec" EntitySet="Prodavec" />
+            <End Role="Sdelki" EntitySet="Sdelki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Prodavec" Association="Self.FK_Users_Prodavec">
+            <End Role="Prodavec" EntitySet="Prodavec" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AgenstvoNedvezjModelContainer" CdmEntityContainer="AgenstvoNedvezjEntities2">
+          <EntitySetMapping Name="Nedvezj">
+            <EntityTypeMapping TypeName="AgenstvoNedvezjModel.Nedvezj">
+              <MappingFragment StoreEntitySet="Nedvezj">
+                <ScalarProperty Name="IdNedvezj" ColumnName="IdNedvezj" />
+                <ScalarProperty Name="IdNedvezjType" ColumnName="IdNedvezjType" />
+                <ScalarProperty Name="IdRayon" ColumnName="IdRayon" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Square" ColumnName="Square" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="IdProdavec" ColumnName="IdProdavec" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Actual" ColumnName="Actual" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NedvezjType">
+            <EntityTypeMapping TypeName="AgenstvoNedvezjModel.NedvezjType">
+              <MappingFragment StoreEntitySet="NedvezjType">
+                <ScalarProperty Name="IdNedvezjType" ColumnName="IdNedvezjType" />
+                <ScalarProperty Name="NedvezjTypeName" ColumnName="NedvezjTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prodavec">
+            <EntityTypeMapping TypeName="AgenstvoNedvezjModel.Prodavec">
+              <MappingFragment StoreEntitySet="Prodavec">
+                <ScalarProperty Name="IdProdavec" ColumnName="IdProdavec" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rayon">
+            <EntityTypeMapping TypeName="AgenstvoNedvezjModel.Rayon">
+              <MappingFragment StoreEntitySet="Rayon">
+                <ScalarProperty Name="IdRayon" ColumnName="IdRayon" />
+                <ScalarProperty Name="NameRayona" ColumnName="NameRayona" />
+                <ScalarProperty Name="NumRayona" ColumnName="NumRayona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sdelki">
+            <EntityTypeMapping TypeName="AgenstvoNedvezjModel.Sdelki">
+              <MappingFragment StoreEntitySet="Sdelki">
+                <ScalarProperty Name="IdSdelki" ColumnName="IdSdelki" />
+                <ScalarProperty Name="IdNedvej" ColumnName="IdNedvej" />
+                <ScalarProperty Name="IdProdavec" ColumnName="IdProdavec" />
+                <ScalarProperty Name="DateSdelki" ColumnName="DateSdelki" />
+                <ScalarProperty Name="KomissiaAgenstva" ColumnName="KomissiaAgenstva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AgenstvoNedvezjModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AgenstvoNedvezjModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="idProdavec" ColumnName="idProdavec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4a0e6cf77b14947bbc89f784ac7d884" Name="Diagram1">
+        <EntityTypeShape EntityType="AgenstvoNedvezjModel.Nedvezj" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvoNedvezjModel.NedvezjType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvoNedvezjModel.Prodavec" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvoNedvezjModel.Rayon" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvoNedvezjModel.Sdelki" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvoNedvezjModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvoNedvezjModel.Users" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="AgenstvoNedvezjModel.FK_Nedvezj_NedvezjType" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvoNedvezjModel.FK_Nedvezj_Prodavec" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvoNedvezjModel.FK_Nedvezj_Rayon" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvoNedvezjModel.FK_Sdelki_Nedvezj" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvoNedvezjModel.FK_Sdelki_Prodavec" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvoNedvezjModel.FK_Users_Prodavec" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
