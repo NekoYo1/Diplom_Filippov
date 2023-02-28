@@ -29,10 +29,10 @@ namespace Kursovoi_Filippov
         {
             try
             {
-                var userData = AgenstvoNedvezjEntities2.GetContext().Users.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == psbPassword.Password);
+                var userData = AgenstvoNedvezjEntities3.GetContext().Users.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == psbPassword.Password);
                 if (userData == null)
                 {
-                    MessageBox.Show("Такого пользователя нет!", "Ошибка авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Неверный логин или пароль!", "Ошибка авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {

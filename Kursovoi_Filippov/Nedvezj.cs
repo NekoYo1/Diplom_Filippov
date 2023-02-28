@@ -88,12 +88,12 @@ namespace Kursovoi_Filippov
                 return result;
             }
         }
-        public string ImagePath 
-        { 
+        public string ImagePath
+        {
             get
-            { 
-                return "/Resources/" + this.Image + ".jpg"; 
-            } 
+            {
+                return "/Resources/" + this.Image + ".jpg";
+            }
         }
 
         public virtual NedvezjType NedvezjType { get; set; }
