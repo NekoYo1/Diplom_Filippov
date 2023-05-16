@@ -19,6 +19,7 @@
         <Frame NavigationUIVisibility="Hidden" Grid.Row="1" ContentRendered="MainFrame_ContentRendered" Name="MainFrame"></Frame>
         <Grid Grid.Row="2" Background="Wheat"></Grid>
         <Button Content="Назад" Style="{StaticResource ButtonGoBack}" Name="BtnBack" HorizontalAlignment="Right" Click="BtnBack_Click"></Button>
+        
     </Grid>
 </Window>
 

@@ -30,7 +30,7 @@ namespace Kursovoi_Filippov
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
 
-            if (AgenstvoNedvezjEntities3.GetContext().Users.Count(x => x.Login == txbLogin.Text) > 0)
+            if (AgenstvoNedvezjEntities.GetContext().Users.Count(x => x.Login == txbLogin.Text) > 0)
             {
                 MessageBox.Show("Пользователь с такими данными есть!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
@@ -43,8 +43,8 @@ namespace Kursovoi_Filippov
                     Login = txbLogin.Text, 
                     Password = txbPass.Text, 
                 };
-                AgenstvoNedvezjEntities3.GetContext().Users.Add(userData);
-                AgenstvoNedvezjEntities3.GetContext().SaveChanges();
+                AgenstvoNedvezjEntities.GetContext().Users.Add(userData);
+                AgenstvoNedvezjEntities.GetContext().SaveChanges();
                 MessageBox.Show("Данные успешно добавлены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch

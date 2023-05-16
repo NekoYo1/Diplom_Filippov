@@ -51,7 +51,7 @@ namespace Kursovoi_Filippov
         {
             get
             {
-                return NedvezjType.NedvezjTypeName.ToString();
+                return NedvezjType.NedvezjTypeName;                                                   
             }
         }
 
@@ -67,7 +67,7 @@ namespace Kursovoi_Filippov
         {
             get
             {
-                return Rayon.NameRayona.ToString();
+                return (Rayon.NameRayona).ToString();
             }
         }
 
@@ -95,6 +95,7 @@ namespace Kursovoi_Filippov
                 return "/Resources/" + this.Image + ".jpg";
             }
         }
+
 
         public virtual NedvezjType NedvezjType { get; set; }
         public virtual Prodavec Prodavec { get; set; }

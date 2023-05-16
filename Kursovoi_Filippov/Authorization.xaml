@@ -18,6 +18,7 @@
                 <Button Content="Регистрация" Style="{StaticResource ButtonReg}" Click="btnRegIn_Click"/>
                 <Button Content="Войти" Style="{StaticResource ButtonIn}" Click="btnIn_Click"/>
                 <Button Content="Предпросмотр" Style="{StaticResource ButtonPred}" Click="Button_Click"></Button>
+                <Button Content="Добавить" Style="{StaticResource ButtonPr}" Click="Button_Click_1"></Button>
             </StackPanel>
 
         </StackPanel>

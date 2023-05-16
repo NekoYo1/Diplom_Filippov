@@ -29,7 +29,7 @@ namespace Kursovoi_Filippov
         {
             try
             {
-                var userData = AgenstvoNedvezjEntities3.GetContext().Users.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == psbPassword.Password);
+                var userData = AgenstvoNedvezjEntities.GetContext().Users.FirstOrDefault(x => x.Login == txbLogin.Text && x.Password == psbPassword.Password);
                 if (userData == null)
                 {
                     MessageBox.Show("Неверный логин или пароль!", "Ошибка авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -57,6 +57,12 @@ namespace Kursovoi_Filippov
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new List());
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Add());
         }
     }
 }
