@@ -21,13 +21,23 @@ namespace Kursovoi_Filippov
             this.Sdelki = new HashSet<Sdelki>();
             this.Users = new HashSet<Users>();
         }
+
+
     
         public int IdProdavec { get; set; }
         public string Familia { get; set; }
         public string Name { get; set; }
         public string Otchestvo { get; set; }
         public string Tel { get; set; }
-    
+
+        public string ProdavecName
+        {
+            get
+            {
+                return Familia + " " + Name + " " + Otchestvo;
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nedvezj> Nedvezj { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

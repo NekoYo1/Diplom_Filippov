@@ -47,29 +47,10 @@ namespace Kursovoi_Filippov
             }
         }
 
-        public string TypeNJ
-        {
-            get
-            {
-                return NedvezjType.NedvezjTypeName;                                                   
-            }
-        }
 
-        public string ProdavecName
-        {
-            get
-            {
-                return Prodavec.Familia + " " + Prodavec.Name + " " + Prodavec.Otchestvo;
-            }
-        }
+       
 
-        public string RayonName
-        {
-            get
-            {
-                return (Rayon.NameRayona).ToString();
-            }
-        }
+       
 
         public string Actuality
         {
