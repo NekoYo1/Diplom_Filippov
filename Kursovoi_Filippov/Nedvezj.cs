@@ -20,14 +20,14 @@ namespace Kursovoi_Filippov
             this.Sdelki = new HashSet<Sdelki>();
         }
     
-        public int IdNedvezj { get; set; }
-        public int IdNedvezjType { get; set; }
-        public int IdRayon { get; set; }
+        public int idNedvezj { get; set; }
+        public int idNedvezjType { get; set; }
+        public int idRayon { get; set; }
         public string Address { get; set; }
         public int Square { get; set; }
         public int Price { get; set; }
         public string Opisanie { get; set; }
-        public int IdProdavec { get; set; }
+        public int idProdavec { get; set; }
         public string Image { get; set; }
         public bool Actual { get; set; }
 
@@ -48,9 +48,9 @@ namespace Kursovoi_Filippov
         }
 
 
-       
 
-       
+
+
 
         public string Actuality
         {
@@ -76,7 +76,6 @@ namespace Kursovoi_Filippov
                 return "/Resources/" + this.Image + ".jpg";
             }
         }
-
 
         public virtual NedvezjType NedvezjType { get; set; }
         public virtual Prodavec Prodavec { get; set; }

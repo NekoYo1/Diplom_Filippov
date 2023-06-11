@@ -20,7 +20,7 @@ namespace Kursovoi_Filippov
             this.Nedvezj = new HashSet<Nedvezj>();
         }
     
-        public int IdNedvezjType { get; set; }
+        public int idNedvezjType { get; set; }
         public string NedvezjTypeName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -27,26 +27,52 @@ namespace Kursovoi_Filippov
         public Add()
         {
             InitializeComponent();
-            TypeNed.ItemsSource = AgenstvoNedvezjEntities.GetContext().NedvezjType.ToList();
-            RayonN.ItemsSource = AgenstvoNedvezjEntities.GetContext().Rayon.ToList();
-            ProdavecC.ItemsSource = AgenstvoNedvezjEntities.GetContext().Prodavec.ToList();
+            DataContext= _currentNedvezj;
+            TypeNed.ItemsSource = AgenstvNedvezjEntities.GetContext().NedvezjType.ToList();
+            RayonN.ItemsSource = AgenstvNedvezjEntities.GetContext().Rayon.ToList();
+            ProdavecC.ItemsSource = AgenstvNedvezjEntities.GetContext().Prodavec.ToList();
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
-            //if (string.IsNullOrWhiteSpace(_currentNedvezj.Address))
-            //    errors.AppendLine("Укажите адрес");
-            //if (string.IsNullOrWhiteSpace(_currentNedvezj.SquareM))
-            //    errors.AppendLine("Укажите площадь");
-            //if (string.IsNullOrWhiteSpace(_currentNedvezj.PriceRub))
-            //    errors.AppendLine("Укажите цену");
-            //if (string.IsNullOrWhiteSpace(_currentNedvezj.Opisanie))
-            //    errors.AppendLine("Добавьте описание");
+            if (string.IsNullOrWhiteSpace(_currentNedvezj.Address))
+                errors.AppendLine("Укажите адрес!");
+            if (string.IsNullOrEmpty(_currentNedvezj.SquareM))
+            {
+                errors.AppendLine("Укажите площадь!");
+            }
+            else
+            {
+                if (Convert.ToInt16(_currentNedvezj.Square) <= 0)
+                    errors.AppendLine("Площадь не может быть меньше или равна 0!");
+            }
+            if (string.IsNullOrEmpty(_currentNedvezj.PriceRub))
+            {
+                errors.AppendLine("Укажите цену!");
+            }
+            else
+            {
+                if (Convert.ToInt16(_currentNedvezj.Price) <= 0)
+                    errors.AppendLine("Цена не может быть меньше или равна 0!");
+            }
+            if (string.IsNullOrWhiteSpace(_currentNedvezj.Opisanie))
+                errors.AppendLine("Добавьте описание!");
+
+            if (_currentNedvezj.NedvezjType == null)
+                errors.AppendLine("Выбирите тип недвижимости!");
+
+            if (_currentNedvezj.Rayon == null)
+                errors.AppendLine("Выбирите район!");
+
+            if (_currentNedvezj.Prodavec == null)
+                errors.AppendLine("Выбирите продавца!");
+
+
 
             if (RA.IsChecked == true)
             {
-                _currentNedvezj.Actual = true; 
+                _currentNedvezj.Actual = true;
             }
             else
             {
@@ -55,46 +81,27 @@ namespace Kursovoi_Filippov
             if (errors.Length > 0)
 
             {
-                MessageBox.Show(errors.ToString());
+                MessageBox.Show(errors.ToString(),"Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (_currentNedvezj.idNedvezj == 0)
+             AgenstvNedvezjEntities.GetContext().Nedvezj.Add(_currentNedvezj);
 
-            _currentNedvezj.Image= "хуй";
-
-            //if (_currentNedvezj.IdNedvezj == 0)
-                AgenstvoNedvezjEntities.GetContext().Nedvezj.Add(_currentNedvezj);
-
-            try
-            {
-
-                AgenstvoNedvezjEntities.GetContext().SaveChanges();
-
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
-                {
-                    MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
-                    MessageBox.Show("");
-                        foreach (DbValidationError err in validationError.ValidationErrors)
-                    {
-                        MessageBox.Show(err.ErrorMessage + "");
-                        }
-                }
-            }
+            
 
             try
-            {
-                AgenstvoNedvezjEntities.GetContext().SaveChanges();
-                MessageBox.Show("Информация сохранена!");
+           {
+                AgenstvNedvezjEntities.GetContext().SaveChanges();
+                MessageBox.Show("Информация сохранена!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
                 Manager.MainFrame.GoBack();
             }
 
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
             }
         }
+    }
 
     }
-}
+

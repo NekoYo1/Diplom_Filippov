@@ -13,7 +13,7 @@
                 <TextBlock Text="Тип недвижимости" Height="24" FontSize="16" HorizontalAlignment="Center"></TextBlock>
                 <ComboBox SelectedItem="{Binding NedvezjType}" Name="TypeNed" DisplayMemberPath="NedvezjTypeName" Height="20"></ComboBox>
                 <TextBlock Text="Район" Height="24" HorizontalAlignment="Center" FontSize="16"></TextBlock>
-                <ComboBox SelectedItem="{Binding RayonName}" Name="RayonN" DisplayMemberPath="NameRayona" Height="20"></ComboBox>
+                <ComboBox SelectedItem="{Binding Rayon}" Name="RayonN" DisplayMemberPath="NameRayona" Height="20"></ComboBox>
                 <TextBlock Text="Адрес" HorizontalAlignment="Center" FontSize="16"></TextBlock>
                 <TextBox Text="{Binding Address}" Height="20"></TextBox>
                 <TextBlock Text="Площадь" HorizontalAlignment="Center" FontSize="16"></TextBlock>
@@ -26,7 +26,7 @@
                 <ComboBox SelectedItem="{Binding Prodavec}" Name="ProdavecC" DisplayMemberPath="ProdavecName" Height="20"></ComboBox>
                 <GroupBox Header="Актуальность">
                     <StackPanel Margin="10">
-                        <RadioButton x:Name="RA" Content="Актуально"/>
+                        <RadioButton x:Name="RA" Content="Актуально" IsChecked="True"/>
                         <RadioButton x:Name="RP" Content="Продано"/>
                     </StackPanel>
                 </GroupBox>

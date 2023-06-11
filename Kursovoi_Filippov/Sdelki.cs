@@ -14,11 +14,11 @@ namespace Kursovoi_Filippov
     
     public partial class Sdelki
     {
-        public int IdSdelki { get; set; }
-        public int IdNedvej { get; set; }
-        public int IdProdavec { get; set; }
-        public System.DateTime DateSdelki { get; set; }
-        public int KomissiaAgenstva { get; set; }
+        public int idSdelki { get; set; }
+        public int idNedvezj { get; set; }
+        public int idProdavec { get; set; }
+        public int Komissia { get; set; }
+        public System.DateTime Data { get; set; }
     
         public virtual Nedvezj Nedvezj { get; set; }
         public virtual Prodavec Prodavec { get; set; }

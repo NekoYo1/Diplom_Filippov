@@ -20,9 +20,9 @@ namespace Kursovoi_Filippov
             this.Nedvezj = new HashSet<Nedvezj>();
         }
     
-        public int IdRayon { get; set; }
+        public int idRayon { get; set; }
         public string NameRayona { get; set; }
-        public int NumRayona { get; set; }
+        public int NumRayon { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nedvezj> Nedvezj { get; set; }

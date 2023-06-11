@@ -17,7 +17,7 @@ namespace Kursovoi_Filippov
         public int idUser { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public Nullable<int> idProdavec { get; set; }
+        public int idProdavec { get; set; }
     
         public virtual Prodavec Prodavec { get; set; }
     }

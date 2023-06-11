@@ -13,14 +13,20 @@ namespace Kursovoi_Filippov
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AgenstvoNedvezjEntities : DbContext
+    public partial class AgenstvNedvezjEntities : DbContext
     {
-        public AgenstvoNedvezjEntities()
-            : base("name=AgenstvoNedvezjEntities")
+        private static AgenstvNedvezjEntities _context; public static AgenstvNedvezjEntities GetContext()
+        { 
+            if (_context == null)
+                _context = new AgenstvNedvezjEntities();
+            return _context;
+        }
+
+        public AgenstvNedvezjEntities()
+            : base("name=AgenstvNedvezjEntities")
         {
         }
-        private static AgenstvoNedvezjEntities _context; public static AgenstvoNedvezjEntities GetContext() { if (_context == null) _context = new AgenstvoNedvezjEntities(); return _context; }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

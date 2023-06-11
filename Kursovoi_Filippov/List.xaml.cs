@@ -23,7 +23,8 @@ namespace Kursovoi_Filippov
         public List()
         {
             InitializeComponent();
-            DGridList.ItemsSource = AgenstvoNedvezjEntities.GetContext().Nedvezj.ToList();
+            var currentList = AgenstvNedvezjEntities.GetContext().Nedvezj.ToList();
+            ListObserve.ItemsSource = currentList;
         }
     }
 }
