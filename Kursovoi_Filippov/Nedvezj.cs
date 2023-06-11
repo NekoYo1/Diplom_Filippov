@@ -35,7 +35,7 @@ namespace Kursovoi_Filippov
         {
             get
             {
-                return Price.ToString() + this.Price + " рублей";
+                return Price.ToString() + " рублей";
             }
         }
 
@@ -43,7 +43,7 @@ namespace Kursovoi_Filippov
         {
             get
             {
-                return Square.ToString() + this.Square + " м²";
+                return Square.ToString() + " M²";
             }
         }
 

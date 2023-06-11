@@ -62,7 +62,7 @@ namespace Kursovoi_Filippov
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new Add());
+            Manager.MainFrame.Navigate(new Add(null));
         }
     }
 }

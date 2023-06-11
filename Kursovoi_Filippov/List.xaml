@@ -6,14 +6,25 @@
       xmlns:local="clr-namespace:Kursovoi_Filippov" xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="List">
+      Title="List" IsVisibleChanged="Page_IsVisibleChanged">
     <Page.Resources>
         <sys:String x:Key="NullImage">
             pack://application:,,,/Resources/null.png
         </sys:String>
     </Page.Resources>
     <Grid>
-        <ListView Grid.Row="1" x:Name="ListObserve" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Удалить" Height="50" Width="120" x:Name="BtnDel" Click="BtnDel_Click" Margin="0 0 500 0" Background="Red"/>
+                <Button Content="Добавить" Height="50" Width="120" x:Name="BtnAdd" Click="BtnAdd_Click" Background="Cyan" />
+            </StackPanel>
+        </WrapPanel>
+        <ListView x:Name="ListObserve" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Grid.Row="0">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
@@ -28,12 +39,14 @@
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition Height="auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Image Source="{Binding ImagePath, FallbackValue={StaticResource NullImage}}" Stretch="UniformToFill" Grid.Row="1"></Image>
-                        <TextBlock Text="{Binding Address}" VerticalAlignment="Center" TextAlignment="Center" Width="390" 
-                                   TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5 5" Grid.Row="0" FontFamily="Comic Sans MS" FontSize="24"></TextBlock>
-                        <TextBlock Text="{Binding PriceRub}" Grid.Row="2" Margin="5 5 5 15" HorizontalAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"></TextBlock>
-                        <TextBlock Text="{Binding Square, StringFormat={}{0:N2} M² }" Grid.Row="3" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="24"></TextBlock>
-                        <TextBlock Text="{Binding Actuality}" Grid.Row="3" HorizontalAlignment="Left" FontFamily="Comic Sans MS" FontSize="24"></TextBlock>
+                        <Image Source="{Binding ImagePath, FallbackValue={StaticResource NullImage}}" Stretch="Fill" Width="200" Height="260" HorizontalAlignment="Left" Grid.Row="1"></Image>
+                        <TextBlock Text="{Binding Address}" VerticalAlignment="Top" TextAlignment="Right" Width="390" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10 45 0 0" Grid.Row="1" FontFamily="Comic Sans MS" FontSize="20"></TextBlock>
+                        <TextBlock Text="{Binding PriceRub}" Grid.Row="2" Margin="0 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24"></TextBlock>
+                        <TextBlock Text="{Binding SquareM}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="20" Margin="0 0 0 60"></TextBlock>
+                        <TextBlock Text="{Binding Actuality}" Grid.Row="1" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="20" VerticalAlignment="Top" Margin="0 10 0 0"></TextBlock>
+                        <TextBlock Text="{Binding Opisanie}" Grid.Row="1" FontFamily="Comic Sans MS" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding Rayon.NameRayona}" Grid.Row="1" FontFamily="Comic Sans MS" FontSize="20" HorizontalAlignment="Right" Margin="0 80 0 0"></TextBlock>
+                        <Button Content="Редактировать" Height="50" Width="120" x:Name="BtnEdit" Click="BtnEdit_Click"  HorizontalAlignment="Right" Margin="20,10,0,0" VerticalAlignment="Center" Background="Green" Grid.Row="3" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

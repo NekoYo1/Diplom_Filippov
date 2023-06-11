@@ -25,6 +25,47 @@ namespace Kursovoi_Filippov
             InitializeComponent();
             var currentList = AgenstvNedvezjEntities.GetContext().Nedvezj.ToList();
             ListObserve.ItemsSource = currentList;
+            
+        }
+
+        private void BtnDel_Click(object sender, RoutedEventArgs e)
+        {
+            var nedvezjremoverange = ListObserve.SelectedItems.Cast<Nedvezj>().ToList();
+
+            if (MessageBox.Show("Вы точно хотите удалить данные?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    AgenstvNedvezjEntities.GetContext().Nedvezj.RemoveRange(nedvezjremoverange);
+
+                    AgenstvNedvezjEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Удалено", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ListObserve.ItemsSource = AgenstvNedvezjEntities.GetContext().Nedvezj.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Add((sender as Button).DataContext as Nedvezj));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                AgenstvNedvezjEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ListObserve.ItemsSource = AgenstvNedvezjEntities.GetContext().Nedvezj.ToList();
+            }
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Add(null));
         }
     }
 }

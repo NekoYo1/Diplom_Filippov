@@ -24,10 +24,14 @@ namespace Kursovoi_Filippov
         private Nedvezj _currentNedvezj = new Nedvezj();
 
 
-        public Add()
+        public Add(Nedvezj selectedNedvezj)
         {
             InitializeComponent();
-            DataContext= _currentNedvezj;
+            if (selectedNedvezj != null)
+                _currentNedvezj = selectedNedvezj;
+
+            DataContext = _currentNedvezj;
+
             TypeNed.ItemsSource = AgenstvNedvezjEntities.GetContext().NedvezjType.ToList();
             RayonN.ItemsSource = AgenstvNedvezjEntities.GetContext().Rayon.ToList();
             ProdavecC.ItemsSource = AgenstvNedvezjEntities.GetContext().Prodavec.ToList();

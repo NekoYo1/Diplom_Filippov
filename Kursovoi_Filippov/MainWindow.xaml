@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovoi_Filippov"
         mc:Ignorable="d"
-        Title="Агентство недвижимости" Height="450" Width="800" Icon="Resources/ico.png" >
+        Title="Агентство недвижимости" Height="450" Width="800" Icon="Resources/ico.png" WindowStartupLocation="CenterScreen" MinHeight="450" MinWidth="800" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
