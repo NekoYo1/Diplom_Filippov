@@ -20,7 +20,7 @@
 
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Удалить" Height="50" Width="120" x:Name="BtnDel" Click="BtnDel_Click" Margin="0 0 500 0" Background="Red"/>
+                <Button Content="Удалить" Height="50" Width="120" x:Name="BtnDel" Click="BtnDel_Click" Margin="0 0 1600 0" Background="Red"/>
                 <Button Content="Добавить" Height="50" Width="120" x:Name="BtnAdd" Click="BtnAdd_Click" Background="Cyan" />
             </StackPanel>
         </WrapPanel>
@@ -33,20 +33,25 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="20" Width="400">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200*"/>
+                            <ColumnDefinition Width="200*"/>
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="70"></RowDefinition>
-                            <RowDefinition Height="310"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
-                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="70"/>
                         </Grid.RowDefinitions>
                         <Image Source="{Binding ImagePath, FallbackValue={StaticResource NullImage}}" Stretch="Fill" Width="200" Height="260" HorizontalAlignment="Left" Grid.Row="1"></Image>
-                        <TextBlock Text="{Binding Address}" VerticalAlignment="Top" TextAlignment="Right" Width="390" TextWrapping="Wrap" HorizontalAlignment="Center" Margin="10 45 0 0" Grid.Row="1" FontFamily="Comic Sans MS" FontSize="20"></TextBlock>
-                        <TextBlock Text="{Binding PriceRub}" Grid.Row="2" Margin="0 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="24"></TextBlock>
-                        <TextBlock Text="{Binding SquareM}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="20" Margin="0 0 0 60"></TextBlock>
-                        <TextBlock Text="{Binding Actuality}" Grid.Row="1" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="20" VerticalAlignment="Top" Margin="0 10 0 0"></TextBlock>
-                        <TextBlock Text="{Binding Opisanie}" Grid.Row="1" FontFamily="Comic Sans MS" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Center" TextWrapping="Wrap"></TextBlock>
-                        <TextBlock Text="{Binding Rayon.NameRayona}" Grid.Row="1" FontFamily="Comic Sans MS" FontSize="20" HorizontalAlignment="Right" Margin="0 80 0 0"></TextBlock>
-                        <Button Content="Редактировать" Height="50" Width="120" x:Name="BtnEdit" Click="BtnEdit_Click"  HorizontalAlignment="Right" Margin="20,10,0,0" VerticalAlignment="Center" Background="Green" Grid.Row="3" />
+                        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{Binding SquareM}" VerticalAlignment="Top" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="15" Grid.Column="1" />
+                            <TextBlock Text="{Binding Address}" VerticalAlignment="Top" TextAlignment="Right" FontFamily="Comic Sans MS" FontSize="15"></TextBlock>
+                            <TextBlock Text="{Binding Rayon.NameRayona}" FontFamily="Comic Sans MS" FontSize="15" HorizontalAlignment="Right" Grid.RowSpan="3"  Grid.Column="1"/>
+                            <TextBlock Text="{Binding Opisanie}" FontFamily="Comic Sans MS" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Top" TextWrapping="Wrap" Grid.Column="1" />
+                        </StackPanel>
+                        <TextBlock Text="{Binding PriceRub}" Grid.Row="2" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="Comic Sans MS" FontSize="24"/>
+                        <TextBlock Text="{Binding Actuality}" Grid.Row="0" HorizontalAlignment="Right" FontFamily="Comic Sans MS" FontSize="20" VerticalAlignment="Bottom" Margin="0 10 0 0" Grid.Column="1"></TextBlock>
+                        <Button Content="Редактировать" Height="50" Width="120" Background="Green" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
