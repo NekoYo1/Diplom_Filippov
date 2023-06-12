@@ -47,11 +47,6 @@ namespace Kursovoi_Filippov
             }
         }
 
-
-
-
-
-
         public string Actuality
         {
             get

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище AgenstvNedvezjModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище BaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Nedvezj">
           <Key>
             <PropertyRef Name="idNedvezj" />
@@ -72,7 +72,7 @@
           <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="idProdavec" Type="int" Nullable="false" />
+          <Property Name="idProdavec" Type="int" />
         </EntityType>
         <Association Name="FK_Nedvezj_NedvezjType">
           <End Role="NedvezjType" Type="Self.NedvezjType" Multiplicity="1" />
@@ -135,7 +135,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Users_Prodavec">
-          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="1" />
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Prodavec">
@@ -146,7 +146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище AgenstvNedvezjModelContainer">
+        <EntityContainer Name="Хранилище BaseModelContainer">
           <EntitySet Name="Nedvezj" EntityType="Self.Nedvezj" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NedvezjType" EntityType="Self.NedvezjType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prodavec" EntityType="Self.Prodavec" Schema="dbo" store:Type="Tables" />
@@ -183,7 +183,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AgenstvNedvezjModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="BaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Nedvezj">
           <Key>
             <PropertyRef Name="idNedvezj" />
@@ -262,7 +262,7 @@
           <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="idProdavec" Type="Int32" Nullable="false" />
+          <Property Name="idProdavec" Type="Int32" />
           <NavigationProperty Name="Prodavec" Relationship="Self.FK_Users_Prodavec" FromRole="Users" ToRole="Prodavec" />
         </EntityType>
         <Association Name="FK_Nedvezj_NedvezjType">
@@ -326,7 +326,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Users_Prodavec">
-          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="1" />
+          <End Role="Prodavec" Type="Self.Prodavec" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Prodavec">
@@ -375,9 +375,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище AgenstvNedvezjModelContainer" CdmEntityContainer="AgenstvNedvezjEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BaseModelContainer" CdmEntityContainer="AgenstvNedvezjEntities">
           <EntitySetMapping Name="Nedvezj">
-            <EntityTypeMapping TypeName="AgenstvNedvezjModel.Nedvezj">
+            <EntityTypeMapping TypeName="BaseModel.Nedvezj">
               <MappingFragment StoreEntitySet="Nedvezj">
                 <ScalarProperty Name="idNedvezj" ColumnName="idNedvezj" />
                 <ScalarProperty Name="idNedvezjType" ColumnName="idNedvezjType" />
@@ -393,7 +393,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NedvezjType">
-            <EntityTypeMapping TypeName="AgenstvNedvezjModel.NedvezjType">
+            <EntityTypeMapping TypeName="BaseModel.NedvezjType">
               <MappingFragment StoreEntitySet="NedvezjType">
                 <ScalarProperty Name="idNedvezjType" ColumnName="idNedvezjType" />
                 <ScalarProperty Name="NedvezjTypeName" ColumnName="NedvezjTypeName" />
@@ -401,7 +401,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Prodavec">
-            <EntityTypeMapping TypeName="AgenstvNedvezjModel.Prodavec">
+            <EntityTypeMapping TypeName="BaseModel.Prodavec">
               <MappingFragment StoreEntitySet="Prodavec">
                 <ScalarProperty Name="idProdavec" ColumnName="idProdavec" />
                 <ScalarProperty Name="Familia" ColumnName="Familia" />
@@ -412,7 +412,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rayon">
-            <EntityTypeMapping TypeName="AgenstvNedvezjModel.Rayon">
+            <EntityTypeMapping TypeName="BaseModel.Rayon">
               <MappingFragment StoreEntitySet="Rayon">
                 <ScalarProperty Name="idRayon" ColumnName="idRayon" />
                 <ScalarProperty Name="NameRayona" ColumnName="NameRayona" />
@@ -421,7 +421,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sdelki">
-            <EntityTypeMapping TypeName="AgenstvNedvezjModel.Sdelki">
+            <EntityTypeMapping TypeName="BaseModel.Sdelki">
               <MappingFragment StoreEntitySet="Sdelki">
                 <ScalarProperty Name="idSdelki" ColumnName="idSdelki" />
                 <ScalarProperty Name="idNedvezj" ColumnName="idNedvezj" />
@@ -432,7 +432,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="AgenstvNedvezjModel.sysdiagrams">
+            <EntityTypeMapping TypeName="BaseModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -443,7 +443,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="AgenstvNedvezjModel.Users">
+            <EntityTypeMapping TypeName="BaseModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
