@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace Kursovoi_Filippov
 {
-    /// <summary>
-    /// Логика взаимодействия для Registration.xaml
-    /// </summary>
+
     public partial class Registration : Page
     {
         public Registration()

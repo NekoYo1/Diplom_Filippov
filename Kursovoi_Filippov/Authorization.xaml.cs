@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace Kursovoi_Filippov
 {
-    /// <summary>
-    /// Логика взаимодействия для Authorization.xaml
-    /// </summary>
+    
     public partial class Authorization : Page
     {
         public Authorization()

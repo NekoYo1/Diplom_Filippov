@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace Kursovoi_Filippov
 {
-    /// <summary>
-    /// Логика взаимодействия для Add.xaml
-    /// </summary>
+
     public partial class Add : Page
     {
         private Nedvezj _currentNedvezj = new Nedvezj();

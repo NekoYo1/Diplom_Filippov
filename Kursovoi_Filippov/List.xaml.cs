@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace Kursovoi_Filippov
 {
-    /// <summary>
-    /// Логика взаимодействия для List.xaml
-    /// </summary>
+
     public partial class List : Page
     {
         public List()
