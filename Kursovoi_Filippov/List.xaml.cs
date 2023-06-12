@@ -49,11 +49,6 @@ namespace Kursovoi_Filippov
             }
         }
 
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new Add((sender as Button).DataContext as Nedvezj));
-        }
-
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (Visibility == Visibility.Visible)
@@ -66,6 +61,11 @@ namespace Kursovoi_Filippov
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Add(null));
+        }
+
+           private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Add((sender as Button).DataContext as Nedvezj));
         }
     }
 }

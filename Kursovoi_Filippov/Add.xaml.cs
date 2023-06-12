@@ -57,7 +57,7 @@ namespace Kursovoi_Filippov
             }
             else
             {
-                if (Convert.ToInt16(_currentNedvezj.Price) <= 0)
+                if (Convert.ToInt32(_currentNedvezj.Price) <= 0)
                     errors.AppendLine("Цена не может быть меньше или равна 0!");
             }
             if (string.IsNullOrWhiteSpace(_currentNedvezj.Opisanie))

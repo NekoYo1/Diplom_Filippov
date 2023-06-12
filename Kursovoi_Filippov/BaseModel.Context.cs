@@ -15,7 +15,8 @@ namespace Kursovoi_Filippov
     
     public partial class AgenstvNedvezjEntities : DbContext
     {
-        private static AgenstvNedvezjEntities _context; public static AgenstvNedvezjEntities GetContext()
+        private static AgenstvNedvezjEntities _context; 
+        public static AgenstvNedvezjEntities GetContext()
         { 
             if (_context == null)
                 _context = new AgenstvNedvezjEntities();

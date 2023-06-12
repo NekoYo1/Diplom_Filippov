@@ -32,7 +32,7 @@ namespace Kursovoi_Filippov
 
             if (AgenstvNedvezjEntities.GetContext().Users.Count(x => x.Login == txbLogin.Text) > 0)
             {
-                MessageBox.Show("Пользователь с такими данными есть!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Пользователь с такими данными есть!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
            
