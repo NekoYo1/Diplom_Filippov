@@ -10,6 +10,17 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="#FF92E292"/>
             <Setter Property="BorderBrush" Value="#FF07A407"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="Button" x:Key="ButtonReg">
             <Setter Property="Height" Value="50"/>
@@ -17,6 +28,17 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="#FFFFFFB9"/>
             <Setter Property="BorderBrush" Value="#FFF5BD25"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="Label" x:Key="Label">
             <Setter Property="Margin" Value="5"/>
@@ -27,11 +49,16 @@
             <Setter Property="Height" Value="30"/>
             <Setter Property="Width" Value="300"/>
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="PasswordBox" x:Key="PasswordBox">
             <Setter Property="Height" Value="30"/>
             <Setter Property="Width" Value="300"/>
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
         <Style TargetType="Button" x:Key="ButtonGoBack">
             <Setter Property="Height" Value="50"/>
@@ -39,6 +66,17 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="#FFFFFFB9"/>
             <Setter Property="BorderBrush" Value="#FFABC14E"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="Button" x:Key="ButtonPred">
             <Setter Property="Height" Value="50"/>
@@ -46,6 +84,30 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="#FFEF5C5C"/>
             <Setter Property="BorderBrush" Value="#FF751D1D"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style TargetType="Button" x:Key="ButtonPr">
             <Setter Property="Height" Value="50"/>
@@ -53,6 +115,21 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="#FF185265"/>
             <Setter Property="BorderBrush" Value="#FF185265"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="8" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
         </Style>
     </Application.Resources>
 </Application>

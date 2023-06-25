@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Kursovoi_Filippov.Utils;
+using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,15 +14,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kursovoi_Filippov
+namespace Kursovoi_Filippov.Pages
 {
-
-    public partial class Add : Page
+    public partial class AddEditPage : Page
     {
         private Nedvezj _currentNedvezj = new Nedvezj();
 
-
-        public Add(Nedvezj selectedNedvezj)
+        public AddEditPage(Nedvezj selectedNedvezj)
         {
             InitializeComponent();
             if (selectedNedvezj != null)
@@ -49,7 +47,7 @@ namespace Kursovoi_Filippov
                 if (Convert.ToInt16(_currentNedvezj.Square) <= 0)
                     errors.AppendLine("Площадь не может быть меньше или равна 0!");
             }
-            if (string.IsNullOrEmpty(_currentNedvezj.PriceRub))
+            if (string.IsNullOrEmpty(_currentNedvezj.Price.ToString()))
             {
                 errors.AppendLine("Укажите цену!");
             }
@@ -83,27 +81,25 @@ namespace Kursovoi_Filippov
             if (errors.Length > 0)
 
             {
-                MessageBox.Show(errors.ToString(),"Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (_currentNedvezj.idNedvezj == 0)
-             AgenstvNedvezjEntities.GetContext().Nedvezj.Add(_currentNedvezj);
+                AgenstvNedvezjEntities.GetContext().Nedvezj.Add(_currentNedvezj);
 
-            
+
 
             try
-           {
+            {
                 AgenstvNedvezjEntities.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
                 Manager.MainFrame.GoBack();
             }
 
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
             }
         }
     }
-
-    }
-
+}

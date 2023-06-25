@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovoi_Filippov"
         mc:Ignorable="d"
-        Title="Агентство недвижимости" Height="450" Width="800" Icon="Resources/ico.png" WindowStartupLocation="CenterScreen" MinHeight="450" MinWidth="800" >
+        Title="Агентство недвижимости" Height="600" Width="1300" Icon="Resources/ico.png" WindowStartupLocation="CenterScreen" MinHeight="600" MinWidth="1300" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
@@ -18,8 +18,7 @@
         <TextBlock Text="«Угол»" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 5"></TextBlock>
         <Frame NavigationUIVisibility="Hidden" Grid.Row="1" ContentRendered="MainFrame_ContentRendered" Name="MainFrame"></Frame>
         <Grid Grid.Row="2" Background="Wheat"></Grid>
-        <Button Content="Назад" Style="{StaticResource ButtonGoBack}" Name="BtnBack" HorizontalAlignment="Right" Click="BtnBack_Click" Margin="0 0 10 0"></Button>
-        
+        <Button Content="Назад" Style="{StaticResource ButtonGoBack}" FontSize="20" Name="BtnBack" HorizontalAlignment="Right" Click="BtnBack_Click" Margin="0 0 10 0"></Button>
     </Grid>
 </Window>
 

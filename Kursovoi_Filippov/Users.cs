@@ -18,9 +18,7 @@ namespace Kursovoi_Filippov
         public string Login { get; set; }
         public string Password { get; set; }
         public Nullable<int> idProdavec { get; set; }
-
-
-
+    
         public virtual Prodavec Prodavec { get; set; }
     }
 }

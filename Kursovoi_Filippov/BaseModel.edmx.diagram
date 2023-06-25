@@ -4,20 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="87a87695f4fd407e91499eb13f33f752" Name="Diagram1">
-        <EntityTypeShape EntityType="BaseModel.Nedvezj" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.NedvezjType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.Prodavec" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.Rayon" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.Sdelki" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
-        <AssociationConnector Association="BaseModel.FK_Nedvezj_NedvezjType" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_Nedvezj_Prodavec" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_Nedvezj_Rayon" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_Sdelki_Nedvezj" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_Sdelki_Prodavec" ManuallyRouted="false" />
-        <AssociationConnector Association="BaseModel.FK_Users_Prodavec" ManuallyRouted="false" />
+      <Diagram DiagramId="8bd3987800ba44eaba793dec36532a7a" Name="Diagram1">
+        <EntityTypeShape EntityType="AgenstvNedvezjModel.Nedvezj" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvNedvezjModel.NedvezjType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvNedvezjModel.Prodavec" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvNedvezjModel.Rayon" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvNedvezjModel.Sdelki" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AgenstvNedvezjModel.Users" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="AgenstvNedvezjModel.FK_Nedvezj_NedvezjType" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvNedvezjModel.FK_Nedvezj_Prodavec" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvNedvezjModel.FK_Nedvezj_Rayon" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvNedvezjModel.FK_Sdelki_Nedvezj" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvNedvezjModel.FK_Sdelki_Prodavec" ManuallyRouted="false" />
+        <AssociationConnector Association="AgenstvNedvezjModel.FK_Users_Prodavec" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kursovoi_Filippov.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kursovoi_Filippov
+namespace Kursovoi_Filippov.Pages
 {
-    
-    public partial class Authorization : Page
+    public partial class SignIn : Page
     {
-        public Authorization()
+        public SignIn()
         {
             InitializeComponent();
         }
@@ -32,13 +32,17 @@ namespace Kursovoi_Filippov
                 {
                     MessageBox.Show("Неверный логин или пароль!", "Ошибка авторизации!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+                else if (txbLogin.Text == "admin" && psbPassword.Password == "admin")
+                {
+                    MessageBox.Show("Здравствуйте, Администратор" + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Manager.MainFrame.Navigate(new NedvijListEdit());
+                }
                 else
                 {
-                    Manager.MainFrame.Navigate(new List());
-
-                    MessageBox.Show("Здравствуйте, " + userData.Login + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
+                    MessageBox.Show("Здравствуйте, " + userData.Prodavec.ProdavecName + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Manager.currentProdavec = userData.Prodavec;
+                    Manager.currentUser = userData;
+                    Manager.MainFrame.Navigate(new NedvijListForUser());
                 }
             }
             catch (Exception Ex)
@@ -49,18 +53,18 @@ namespace Kursovoi_Filippov
 
         private void btnRegIn_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new Registration());
+            Manager.MainFrame.Navigate(new SignUp());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new List());
+            Manager.MainFrame.Navigate(new NedvijList());
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new Add(null));
+            Manager.MainFrame.Navigate(new AddEditPage(null));
         }
     }
 }

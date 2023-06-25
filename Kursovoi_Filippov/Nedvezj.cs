@@ -11,7 +11,8 @@ namespace Kursovoi_Filippov
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media;
+
     public partial class Nedvezj
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,14 +31,6 @@ namespace Kursovoi_Filippov
         public int idProdavec { get; set; }
         public string Image { get; set; }
         public bool Actual { get; set; }
-
-        public string PriceRub
-        {
-            get
-            {
-                return Price.ToString() + " рублей";
-            }
-        }
 
         public string SquareM
         {
@@ -64,6 +57,21 @@ namespace Kursovoi_Filippov
                 return result;
             }
         }
+
+        public SolidColorBrush colorBrush
+        {
+            get
+            {
+                if (Actual == true)
+                {
+                    return Brushes.Green;
+                }
+                else
+                {
+                    return Brushes.Red;
+                }
+            }
+        }
         public string ImagePath
         {
             get
@@ -71,6 +79,7 @@ namespace Kursovoi_Filippov
                 return "/Resources/" + this.Image + ".jpg";
             }
         }
+
 
         public virtual NedvezjType NedvezjType { get; set; }
         public virtual Prodavec Prodavec { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kursovoi_Filippov.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,17 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Kursovoi_Filippov
+namespace Kursovoi_Filippov.Pages
 {
-
-    public partial class List : Page
+    /// <summary>
+    /// Логика взаимодействия для NedvijListEdit.xaml
+    /// </summary>
+    public partial class NedvijListEdit : Page
     {
-        public List()
+        public NedvijListEdit()
         {
             InitializeComponent();
-            var currentList = AgenstvNedvezjEntities.GetContext().Nedvezj.ToList();
-            ListObserve.ItemsSource = currentList;
-            
+            ListObserve.ItemsSource = AgenstvNedvezjEntities.GetContext().Nedvezj.ToList();
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
@@ -58,12 +59,12 @@ namespace Kursovoi_Filippov
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new Add(null));
+            Manager.MainFrame.Navigate(new AddEditPage(null));
         }
 
-           private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new Add((sender as Button).DataContext as Nedvezj));
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Nedvezj));
         }
     }
 }

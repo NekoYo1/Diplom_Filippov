@@ -15,13 +15,16 @@ namespace Kursovoi_Filippov
     
     public partial class AgenstvNedvezjEntities : DbContext
     {
+
         private static AgenstvNedvezjEntities _context;
+
         public static AgenstvNedvezjEntities GetContext()
         {
             if (_context == null)
                 _context = new AgenstvNedvezjEntities();
             return _context;
         }
+
         public AgenstvNedvezjEntities()
             : base("name=AgenstvNedvezjEntities")
         {
@@ -37,7 +40,6 @@ namespace Kursovoi_Filippov
         public virtual DbSet<Prodavec> Prodavec { get; set; }
         public virtual DbSet<Rayon> Rayon { get; set; }
         public virtual DbSet<Sdelki> Sdelki { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

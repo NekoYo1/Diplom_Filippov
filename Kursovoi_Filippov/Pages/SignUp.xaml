@@ -1,0 +1,42 @@
+﻿<Page x:Class="Kursovoi_Filippov.Pages.SignUp"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Kursovoi_Filippov.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SignUp">
+
+    <Grid Background="LightGray">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Label FontSize="30" Content="Фамилия" Style="{StaticResource Label}"/>
+                <TextBox x:Name="txbFamilya" Height="40" FontSize="26" Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Label FontSize="30" Content="Имя" Style="{StaticResource Label}"/>
+                <TextBox x:Name="txbName" Height="40" FontSize="26" Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Label FontSize="30" Content="Отчество" Style="{StaticResource Label}"/>
+                <TextBox x:Name="txbOtchestvo" Height="40" FontSize="26" Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Label FontSize="30" Content="Номер телефона" Style="{StaticResource Label}"/>
+                <TextBox x:Name="txbPhone" Height="40" FontSize="26" Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Label FontSize="30" Content="Введите логин" Style="{StaticResource Label}"/>
+                <TextBox x:Name="txbLogin" Height="40" FontSize="26" Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <Label FontSize="30" Content="Введите пароль" Style="{StaticResource Label}"/>
+                <PasswordBox x:Name="txbPass" Height="40" FontSize="26" Width="250"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnCreate" Width="350" FontSize="28" Content="Зарегистрироваться" Style="{StaticResource ButtonIn}" Click="btnCreate_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

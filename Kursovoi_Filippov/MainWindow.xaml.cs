@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kursovoi_Filippov.Pages;
+using Kursovoi_Filippov.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +23,7 @@ namespace Kursovoi_Filippov
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Authorization());
+            MainFrame.Navigate(new SignIn());
             Manager.MainFrame = MainFrame;
         }
 
